@@ -1,0 +1,160 @@
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+      <app-nabvar></app-nabvar>
+      <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+          <app-siderbar></app-siderbar>
+          <div class="pcoded-content">
+            <!-- Page-header start -->
+            <div class="page-header">
+              <div class="page-block">
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <div class="page-header-title">
+               
+               
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <ul class="breadcrumb">
+                      <li class="breadcrumb-item">
+            
+                      </li>
+                     
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Page-header end -->
+            <div class="pcoded-inner-content">
+              <div class="main-body">
+                <div class="page-wrapper">
+                  <div class="page-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card">
+                          <div class="card-header">
+                            <h5>
+                              <p  *ngIf="!banderaEdicion.actualzar">Agregar Un Producto</p>
+                              <p  *ngIf="banderaEdicion.actualzar">Actualizar Un Producto</p>
+                          </h5>
+                            <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+                          </div>
+                          <div class="card-block">
+                            <form
+                              class="form-material"
+                              (submit)="RegistrarUsuario()"
+                              #myForm="ngForm"
+                            >
+                              <div class="form-group form-default">
+                                <input
+                                  type="text"
+                                  name="nombre"
+                                  class="form-control"
+                                  [(ngModel)]="datos.nombre"
+                                  required
+                                  placeholder="Ingresa El nombre del producto"
+                                />
+                              </div>
+                              <div class="form-group form-default">
+                                <input
+                                  type="number"
+                                  name="cantidad"
+                                  class="form-control"
+                                  [(ngModel)]="datos.cantidad"
+                                  required
+                                  placeholder="Ingresa la cantidad"
+                                />
+                              </div>
+                              <div class="form-group form-default">
+                                <input
+                                  type="text"
+                                  name="proveedor"
+                                  class="form-control"
+                                  [(ngModel)]="datos.Proveedor"
+                                  placeholder="Ingresa el nombre del proveedor"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group form-default">
+                                <input
+                                  type="text"
+                                  name="precio"
+                                  class="form-control"
+                                  [(ngModel)]="datos.precio"
+                                  placeholder="Ingresa el precio"
+                                  required
+                                />
+                              </div>
+                              <div class="row m-t-30">
+                                <div class="col-md-12">
+                                  <button
+                                    type="submit"
+                                    class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20"
+                                  >
+                                  <p  *ngIf="!banderaEdicion.actualzar">Crear Usuario</p>
+                                  <p  *ngIf="banderaEdicion.actualzar">Actualizar Usuario</p>
+                                  </button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="row" *ngIf="bandera">
+                          <div
+                            class="card col-md-6"
+                            style="width: 18rem"
+                            *ngFor="let task of privateTasks"
+                          >
+                            <div class="card-body">
+                              <h5 class="card-title">{{ task.nombre }}</h5>
+                              <p class="card-text">Precio:{{ task.precio }}</p>
+                              <p class="card-text">
+                                Unidades en stock:{{ task.cantidad }}
+                              </p>
+                              <p class="card-text">
+                                Proveedor:{{ task.Proveedor }}
+                              </p>
+                              <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary" (click)="editarAnalista(task)">
+                                  EDITAR
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn btn-danger"
+                                  (click)="EliminarAnalista(task._id)"
+                                >
+                                  ELIMINAR
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="row" *ngIf="!bandera">
+                          <div
+                            class="card col-md-6"
+                            style="width: 18rem"
+                          >
+                            <div class="card-body">
+                              <h5 class="card-title">No hay ninguna</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="styleSelector"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

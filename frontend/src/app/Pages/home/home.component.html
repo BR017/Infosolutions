@@ -1,0 +1,188 @@
+<div id="pcoded" class="pcoded">
+  <div class="pcoded-overlay-box"></div>
+  <div class="pcoded-container navbar-wrapper">
+    <app-nabvar></app-nabvar>
+    <div class="pcoded-main-container">
+      <div class="pcoded-wrapper">
+        <app-siderbar></app-siderbar>
+        <div class="pcoded-content">
+          <!-- Page-header start -->
+          <div class="page-header">
+            <div class="page-block">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <div class="page-header-title">
+
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      
+                    </li>
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Page-header end -->
+          <div class="pcoded-inner-content">
+            <div class="main-body">
+              <div class="page-wrapper">
+                <div class="page-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5>
+                            <p  *ngIf="!banderaEdicion.actualzar">Agregar Un usuario</p>
+                            <p  *ngIf="banderaEdicion.actualzar">Actualizar Un usuario</p>
+                        </h5>
+                          <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+                        </div>
+                        <div class="card-block">
+                          <form
+                            class="form-material"
+                            (submit)="RegistrarUsuario()"
+                            #myForm="ngForm"
+                          >
+                            <div class="form-group form-default">
+                              <input
+                                type="text"
+                                name="name"
+                                class="form-control"
+                                [(ngModel)]="datos.Nombre"
+                                required
+                                placeholder="Ingresa tu nombre"
+                              />
+                            </div>
+                            <div class="form-group form-default">
+                              <input
+                                type="email"
+                                name="email"
+                                class="form-control"
+                                [(ngModel)]="datos.Correo"
+                                required
+                                placeholder="Ingresa tu Correo"
+                              />
+                            </div>
+                            <div class="form-group form-default">
+                              <input
+                                type="password"
+                                name="password"
+                                class="form-control"
+                                [(ngModel)]="datos.password"
+                                placeholder="Ingresa tu Contraseña"
+                                required
+                              />
+                            </div>
+                            <div class="form-group form-default">
+                              <input
+                                type="number"
+                                name="uid"
+                                class="form-control"
+                                [(ngModel)]="datos.Identificacion"
+                                placeholder="Ingresa tu Identificacion"
+                                required
+                              />
+                            </div>
+                            <div class="form-group form-default">
+                              <input
+                                type="number"
+                                name="phone"
+                                class="form-control"
+                                [(ngModel)]="datos.Telefono"
+                                placeholder="Ingresa tu Telefono"
+                                required
+                              />
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-sm-6 col-form-label"
+                                >Permisos (Agregar Usuarios)</label
+                              >
+                              <div class="col-sm-6">
+                                <select
+                                  name="select"
+                                  class="form-control"
+                                  [(ngModel)]="datos.Permisos"
+                                  required
+                                >
+                                  <option value="opt1">Seleccione...</option>
+                                  <option value="true">Si</option>
+                                  <option value="false">No</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="row m-t-30">
+                              <div class="col-md-12">
+                                <button
+                                  type="submit"
+                                  class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20"
+                                >
+                                <p  *ngIf="!banderaEdicion.actualzar">Crear Usuario</p>
+                                <p  *ngIf="banderaEdicion.actualzar">Actualizar Usuario</p>
+                                </button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="row" *ngIf="bandera">
+                        <div
+                          class="card col-md-6"
+                          style="width: 18rem"
+                          *ngFor="let task of privateTasks"
+                        >
+                          <div class="card-body">
+                            <h5 class="card-title">{{ task.Nombre }}</h5>
+                            <p class="card-text">Correo:{{ task.Correo }}</p>
+                            <p class="card-text">
+                              Permisos:{{ task.Permisos }}
+                            </p>
+                            <p class="card-text">
+                              Correo:{{ task.Identificacion }}
+                            </p>
+                            <p class="card-text">
+                              Permisos:{{ task.Telefono }}
+                            </p>
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-primary" (click)="editarAnalista(task)">
+                                EDITAR
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-danger"
+                                (click)="EliminarAnalista(task._id)"
+                              >
+                                ELIMINAR
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row" *ngIf="!bandera">
+                        <div
+                          class="card col-md-6"
+                          style="width: 18rem"
+                        >
+                          <div class="card-body">
+                            <h5 class="card-title">No hay ninguna</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="styleSelector"></div>
+      </div>
+    </div>
+  </div>
+</div>
